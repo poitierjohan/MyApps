@@ -1,8 +1,32 @@
+code_library_code:
+    resource: "@CodeLibraryCodeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+website:
+    resource: "@WebsiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+core:
+    resource: "@CoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
 
+dyweeCore:
+    resource: "@DyweeCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
