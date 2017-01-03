@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+<div class="modal-header bg-blue">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title"><i class="fa fa-newspaper-o"></i> Changer de journal</h4>
+</div>
+<div class="modal-body">
+    {{ form_rest(form) }}
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Annuler</button>
+    {% include '@Core/Button/submit.html.twig' %}
+</div>
+{{ form_end(form) }}

@@ -1,5 +1,5 @@
-code_library_code:
-    resource: "@CodeLibraryCodeBundle/Controller/"
+erp_document:
+    resource: "@ERPDocumentBundle/Controller/"
     type:     annotation
     prefix:   /
 

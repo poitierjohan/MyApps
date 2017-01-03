@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeLibrary\CodeBundle\Controller;
+namespace ERP\DocumentBundle\Controller;
 
 class ParentController extends \CoreBundle\Controller\ParentController
 {

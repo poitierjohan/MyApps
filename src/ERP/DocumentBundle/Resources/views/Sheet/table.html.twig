@@ -1,0 +1,57 @@
+{% extends "@ERPDocument/admin.html.twig" %}
+
+{% block metaTitle %}
+    Journaux
+{% endblock %}
+
+{% block title %}
+    Journaux
+{% endblock %}
+
+{% block titleSmall %}
+    Liste de vos journaux
+{% endblock %}
+
+{% block titleAction %}
+    <a href="{{ path(app.request.get('_route')|replace({'_table': '_add'})) }}"
+       class="btn btn-primary"
+       data-toggle="modal"
+       data-dismiss="modal"
+       data-target="#modal">
+        <i class="fa fa-plus-circle"></i> Nouveau
+    </a>
+{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-12 no-padding">
+        <div class="box box-primary">
+            <div class="box-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Abrégé</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for sheet in sheets %}
+                        <tr>
+                            <td>{{ sheet.name }}</td>
+                            <td>{{ sheet.abbr }}</td>
+                            <td>
+                                <div class="btn-group btn-group-xs">
+                                    <a href="{{ path('admin_erp_document_sheet_update', {id: sheet.id}) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ path('admin_erp_document_sheet_delete', {id: sheet.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+.btn.btn-rounded {
+    width:60px;
+    height:60px;
+    box-shadow:2px 2px 8px #aaa;
+    border-radius:50%;
+    position: fixed;
+    z-index: 1000;
+    line-height: 60px;
+    vertical-align: center;
+    top: calc(100% - 130px);
+    left: calc(100% - 80px);
+}
+
+.popover{
+    width: 150px;
+}
