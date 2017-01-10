@@ -32,6 +32,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Abrégé</th>
+                            <th>Nb. doc.</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -40,9 +41,10 @@
                         <tr>
                             <td>{{ sheet.name }}</td>
                             <td>{{ sheet.abbr }}</td>
+                            <td>{{ sheet.documents|length }}</td>
                             <td>
                                 <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('admin_erp_document_sheet_update', {id: sheet.id}) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ path('admin_erp_document_sheet_update', {id: sheet.id}) }}" class="btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#modal"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ path('admin_erp_document_sheet_delete', {id: sheet.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </div>
                             </td>

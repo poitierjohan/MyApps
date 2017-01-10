@@ -2,6 +2,7 @@
 
 namespace ERP\DocumentBundle\Entity;
 
+use CoreBundle\Traits\CreatedAtableEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sheet
 {
+    use CreatedAtableEntity;
+
     /** @ORM\ManyToOne(targetEntity="UserBundle\Entity\User") */
     private $user;
 
@@ -38,14 +41,9 @@ class Sheet
     private $abbr;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="boolean")
      */
-    private $color;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
+    private $updateStock;
 
 
     public function __construct()
@@ -136,30 +134,6 @@ class Sheet
     }
 
     /**
-     * Set color
-     *
-     * @param string $color
-     *
-     * @return Sheet
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
      * Add document
      *
      * @param \ERP\DocumentBundle\Entity\Document $document
@@ -215,5 +189,29 @@ class Sheet
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set updateStock
+     *
+     * @param boolean $updateStock
+     *
+     * @return Sheet
+     */
+    public function setUpdateStock($updateStock)
+    {
+        $this->updateStock = $updateStock;
+
+        return $this;
+    }
+
+    /**
+     * Get updateStock
+     *
+     * @return boolean
+     */
+    public function getUpdateStock()
+    {
+        return $this->updateStock;
     }
 }

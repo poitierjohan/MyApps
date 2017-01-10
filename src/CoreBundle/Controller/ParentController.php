@@ -32,10 +32,6 @@ class ParentController extends DyweeParentController
             }
         }
 
-        //Integration of the BundleName if method "setBundle" exist
-        if(method_exists($object, 'setBundle')){
-            $object->setBundle($this->bundleName);
-        }
         return parent::handleForm($object, $request, $parameters);
     }
 }

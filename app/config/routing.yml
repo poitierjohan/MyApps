@@ -1,3 +1,13 @@
+erp_product:
+    resource: "@ERPProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+erp_user:
+    resource: "@ERPUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 erp_document:
     resource: "@ERPDocumentBundle/Controller/"
     type:     annotation

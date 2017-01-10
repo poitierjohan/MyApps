@@ -2,6 +2,7 @@
 
 namespace ERP\DocumentBundle\Controller;
 
+use ERP\DocumentBundle\Entity\Sheet;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,37 +11,23 @@ class SheetController extends ParentController
 {
     /**
      * @Route(
-     *     "admin/erp/document/sheet/switch",
-     *     name="admin_erp_document_sheet_switch"
+     *     "admin/erp/document/sheet/switch/{id}",
+     *     name="admin_erp_document_sheet_switch",
+     *     requirements={"id" = "\d+"}
      * )
      */
-    public function switchAction(Request $request)
+    public function switchAction(Sheet $id, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $sheets = $em->getRepository("ERPDocumentBundle:Sheet")->findByUser($this->getUser());
+        $this->setActiveSheet($id);
 
-        $form = $this->get('form.factory')->createBuilder()
-            ->add('sheet', ChoiceType::class, [
-                "choices" => $sheets,
-                "label" => "Journal",
-                "choice_label" => "name"
-            ])
-            ->setAction($this->generateUrl('admin_erp_document_sheet_switch'))
-            ->getForm();
-
-        if ($form->handleRequest($request)->isValid())
-        {
-            $this->setActiveSheet($form->getViewData()['sheet']);
-        }
-
-        return $this->render("@ERPDocument/Sheet/switch.html.twig", [
-            "form" => $form->createView()
-        ]);
+        if($request->query->get('redirection'))
+            return $this->redirectToRoute($request->query->get('redirection'));
+        return $this->redirect($this->getPreviousRoute($request) ?? $this->generateUrl('admin_erp_document_document_table'));
     }
 
     /**
      * @Route(
-     *     "admin/erp/document/sheet",
+     *     "admin/erp/document/sheet/table",
      *     name="admin_erp_document_sheet_table"
      * )
      */

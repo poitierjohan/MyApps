@@ -1,0 +1,21 @@
+<li class="dropdown messages-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-folder-open"></i> {{ actualSheet.name|default('Choisissez votre journal') }}
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">Choissisez votre journal de travail</li>
+        <li>
+            <!-- inner menu: contains the actual data -->
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                {% for sheet in sheets %}
+                    <li>
+                        <a href="{{ path('admin_erp_document_sheet_switch', {id: sheet.id}) }}">
+                            <i class="fa fa-folder text-black"></i> {{ sheet.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 195.122px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+        </li>
+    </ul>
+</li>

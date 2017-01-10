@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new WebsiteBundle\WebsiteBundle(),
             new \Dywee\CoreBundle\DyweeCoreBundle(),
             new ERP\DocumentBundle\ERPDocumentBundle(),
+            new ERP\UserBundle\ERPUserBundle(),
+            new ERP\ProductBundle\ERPProductBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

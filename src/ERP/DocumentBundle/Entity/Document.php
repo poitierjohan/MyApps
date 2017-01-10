@@ -2,6 +2,7 @@
 
 namespace ERP\DocumentBundle\Entity;
 
+use CoreBundle\Traits\CreatedAtableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -13,8 +14,13 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class Document
 {
-    /** @ORM\ManyToOne(targetEntity="Sheet", inversedBy="documents", cascade={"all"}) */
+    use CreatedAtableEntity;
+
+    /** @ORM\ManyToOne(targetEntity="Sheet", inversedBy="documents", cascade={"persist"}) */
     private $sheet;
+
+    /** @ORM\ManyToOne(targetEntity="ERP\UserBundle\Entity\User", inversedBy="documents", cascade={"persist"}) */
+    private $user;
     
     /**
      * @var int
@@ -39,14 +45,13 @@ class Document
      */
     private $reference;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
+    }
+
+    public function getParentEntity(){
+        return $this->getSheet() ? $this->getSheet() :  new Sheet();
     }
 
     /**
@@ -108,41 +113,14 @@ class Document
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Document
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
      * Set sheet
      *
      * @param \ERP\DocumentBundle\Entity\Sheet $sheet
      *
      * @return Document
      */
-    public function setSheet()
+    public function setSheet(\ERP\DocumentBundle\Entity\Sheet $sheet = null)
     {
-        $session = new Session();
-        $sheet = $session->get('activeSheet');
-        dump($sheet);
         $this->sheet = $sheet;
 
         return $this;
@@ -156,5 +134,29 @@ class Document
     public function getSheet()
     {
         return $this->sheet;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ERP\UserBundle\Entity\User $user
+     *
+     * @return Document
+     */
+    public function setUser(\ERP\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ERP\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

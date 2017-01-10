@@ -10,4 +10,25 @@ namespace ERP\DocumentBundle\Repository;
  */
 class DocumentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLastDocument($sheetEntity)
+    {
+        $bq = $this->createQueryBuilder("d")
+            ->where("d.sheet = :id")
+            ->orderBy('d.id', 'DESC')
+            ->setParameters([
+                "id" => $sheetEntity->getId()
+            ]);
+        return $bq->getQuery()->getResult();
+    }
+
+    public function findBySheet($sheet)
+    {
+        $bq = $this->createQueryBuilder("d")
+            ->where("d.sheet = :sheet")
+            ->orderBy('d.number', 'DESC')
+            ->setParameters([
+                "sheet" => $sheet
+            ]);
+        return $bq->getQuery()->getResult();
+    }
 }

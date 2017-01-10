@@ -16,6 +16,10 @@ class SheetType extends AbstractType
         $builder
             ->add('name', null, ["label" => "Nom"])
             ->add('abbr', null, ["label" => "Abrégé"])
+            ->add('updateStock', null, [
+                "label" => "Autorisation de gestion du stock",
+                "disabled" => true
+            ])
         ;
     }
 
