@@ -45,7 +45,7 @@ class ProductController extends ParentController
      */
     public function updateAction($id, Request $request, $parameters = null)
     {
-        $parameters['redirectTo'] = "referer";
+        $parameters['redirectTo'] = 'admin_erp_product_product_table';
         $parameters['formAction'] = $this->generateUrl('admin_erp_product_product_update', [
             "id" => $id
         ]);
@@ -63,7 +63,7 @@ class ProductController extends ParentController
      */
     public function deleteAction($id, Request $request, $parameters = null)
     {
-        $parameters['redirectTo'] = $this->generateUrl('admin_erp_product_product_delete');
+        $parameters['redirectTo'] = 'admin_erp_product_product_table';
 
         return parent::deleteAction($id, $request, $parameters);
     }

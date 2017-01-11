@@ -21,7 +21,7 @@
         #}
         <ul class="sidebar-menu">
             <li class="header">Navigation</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Documents</span>
                     <span class="pull-right-container">
@@ -33,7 +33,7 @@
                     <li><a href="{{ path('admin_erp_document_sheet_table') }}"><i class="fa fa-circle-o"></i> Journaux</a></li>
                 </ul>
             </li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Utilisateurs</span>
                     <span class="pull-right-container">
@@ -42,6 +42,17 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('admin_erp_user_user_table') }}"><i class="fa fa-circle-o"></i> Clients / fournisseurs</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Produits</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('admin_erp_product_product_table') }}"><i class="fa fa-circle-o"></i> Produits</a></li>
                 </ul>
             </li>
         </ul>

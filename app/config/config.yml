@@ -82,3 +82,14 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: UserBundle\Entity\User
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_image:
+            uri_prefix:         /product/images
+            upload_destination: '%kernel.root_dir%/../web/product/images'
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid

@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new ERP\DocumentBundle\ERPDocumentBundle(),
             new ERP\UserBundle\ERPUserBundle(),
             new ERP\ProductBundle\ERPProductBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

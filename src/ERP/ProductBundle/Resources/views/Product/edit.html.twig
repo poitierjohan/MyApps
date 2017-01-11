@@ -1,1 +1,90 @@
-{% include '@ERPUser/User/form.html.twig' %}
+{% extends "@ERPProduct/admin.html.twig" %}
+
+{% form_theme form.images 'ERPProductBundle:Form:image_collection_widget.html.twig' %}
+
+{% block metaTitle %}
+    Produits
+{% endblock %}
+
+{% block title %}
+    Modifier produit
+{% endblock %}
+
+{% block titleSmall %}
+    METTRE LE NOM DU PRODUIT
+{% endblock %}
+
+{% block titleAction %}
+
+    <button type="submit"
+            class="btn btn-success"
+    >
+        <i class="fa fa-save"></i> Sauvegarder
+    </button>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+    {{ form_start(form) }}
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Informations générales</h3>
+            </div>
+            <div class="box-body">
+                {{ form_row(form.code) }}
+                {{ form_row(form.name) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Images</h3>
+            </div>
+            <div class="box-body">
+                {{ form_widget(form.images) }}
+            </div>
+        </div>
+    </div>
+        <button type="submit"
+                class="btn btn-success"
+        >
+            <i class="fa fa-save"></i> Sauvegarder
+        </button>
+
+    {{ form_rest(form) }}
+
+    {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block footerJavascript %}
+        <script>
+            var personnalConfig1 = {
+                container_type: 'table',
+                container_child: 'tbody',
+                label: '',
+                allow_add: true,
+                allow_delete: true,
+                auto_add: false,
+                add_btn: {
+                    container_class: 'col-md-offset-2 col-md-8',
+                    target: '.action-add',
+                    'class': 'btn btn-default btn-block grid-width-80',
+                    icon: '<i class="fa fa-plus"></i>',
+                    text: 'Ajouter un numéro'
+                },
+                remove_btn: {
+                    target: '.action-delete',
+                    'class': 'btn btn-danger',
+                    icon: 'fa fa-trash',
+                    text: ''
+                }
+            };
+            dywee_handle_form_collection("erp_productbundle_product_images", personnalConfig1);
+        </script>
+{% endblock %}

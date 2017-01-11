@@ -6,30 +6,29 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
-trait NameableEntity
+trait CodeableEntity
 {
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"list"})
+     * @ORM\Column(type="string", length=255)
      */
-    protected $name;
+    protected $code;
 
     /**
      * @return string
      */
-    public function getName()
+    public function getCode()
     {
-        return $this->name;
+        return $this->code;
     }
 
     /**
      * @param string $name
-     * @return NameableEntity
+     * @return CodeableEntity
      */
-    public function setName($name)
+    public function setCode($name)
     {
-        $this->name = $name;
+        $this->code = $name;
         return $this;
     }
 

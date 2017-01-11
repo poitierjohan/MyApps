@@ -10,4 +10,14 @@ namespace ERP\ProductBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUser($user)
+    {
+        $bq = $this->createQueryBuilder("p")
+            ->where("p.user = :user")
+            ->orderBy('p.code', 'ASC')
+            ->setParameters([
+                "user" => $user
+            ]);
+        return $bq->getQuery()->getResult();
+    }
 }

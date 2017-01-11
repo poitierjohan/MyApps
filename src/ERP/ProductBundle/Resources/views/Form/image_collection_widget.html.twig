@@ -1,0 +1,41 @@
+{% block collection_widget %}
+    {% spaceless %}
+
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': block('collection_item_widget') }) %}
+        {% endif %}
+        {{ form_errors(form) }}
+
+        <div {{ block('widget_container_attributes') }}>
+            <table {{ block('widget_container_attributes') }} class="table table-condensed no-border">
+                <tbody id="offerElementsContainer">
+                    {% for rows in form %}
+                        <tr>
+                            <td width="99%">{{ form_widget(rows.imageFile) }}</td>
+                            <td width="1%" class="action-delete"></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="action-add"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        {{ form_rest(form) }}
+
+    {% endspaceless %}
+{% endblock collection_widget %}
+
+{% block collection_item_widget %}
+    {% spaceless %}
+        <tr>
+            <td width="99%">
+                {{ form_widget(prototype.imageFile) }}
+            </td>
+            <td width="1%" class="action-delete"></td>
+        </tr>
+    {% endspaceless %}
+{% endblock collection_item_widget %}
